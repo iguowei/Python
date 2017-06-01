@@ -13,7 +13,10 @@ class Mammal(Animal):
 	pass
 	
 class Bird(Animal):
-	pass
+	def __str__(self):
+		return 'this is bird'
+	
+	__repr__ = __str__
 	
 
 
@@ -32,7 +35,18 @@ class Flyable(Bird):
 
 
 
-
+class Fib(object):
+	def __init__(self):
+		self.a, self.b = 0, 1
+		
+	def __iter__(self):
+		return self
+		
+	def __next__(self):
+		self.a, self.b = self.b, self.a + self.b
+		if self.a > 20:
+			raise NameError()
+		return self.a
 
 
 
@@ -60,3 +74,17 @@ class demo2(object):
 
 class demo(demo2,demo1): #和demo1与demo2的顺序有关，demo继承demo2的__name
     pass
+    
+    
+    
+def a():
+	pass
+	
+	
+	
+class Student(object):
+	def __init__(self, name):
+		self.name = name
+
+	def __call__(self, *args, **kwargs):
+		print('My name is %s.' % self.name)
